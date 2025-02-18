@@ -29,11 +29,11 @@
 </head>
 <body>
 
-    <h1>Nama Toko</h1>
+    <h2>NAM<sup>2</sup></h2>
+    <h2>T SHIRT STORE</h2>
 
     <div class="button-container">
         <a href="{{ route('katalog') }}">Home</a>
-        <a href="{{ route('produk') }}">Produk</a>
         <a href="{{ route('tentang') }}">Tentang</a>
         <a href="{{ route('login') }}">Login</a>
     </div>

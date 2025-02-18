@@ -13,11 +13,6 @@ class KatalogController extends Controller
         return view('katalog', compact('produk'));
     }
 
-    public function produk()
-    {
-        return view('produk');
-    }
-
     public function tentang()
     {
         return view('tentang');
@@ -26,5 +21,10 @@ class KatalogController extends Controller
     public function login()
     {
         return view('login');
+    }
+
+    public function register()
+    {
+        return view('register');
     }
 }
