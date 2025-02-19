@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
@@ -18,10 +19,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [KatalogController::class, 'katalog'])->name('katalog');
-Route::get('/produk', [KatalogController::class, 'produk'])->name('produk');
 Route::get('/tentang', [KatalogController::class, 'tentang'])->name('tentang');
-Route::get('/login', [KatalogController::class, 'login'])->name('login');
-Route::get('/register', [KatalogController::class, 'register'])->name('register');
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 Route::resource('/produk', ProdukController::class);

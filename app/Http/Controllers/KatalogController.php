@@ -17,14 +17,4 @@ class KatalogController extends Controller
     {
         return view('tentang');
     }
-
-    public function login()
-    {
-        return view('login');
-    }
-
-    public function register()
-    {
-        return view('register');
-    }
 }

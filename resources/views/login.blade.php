@@ -86,25 +86,34 @@
 <body>
     <div class="login-form">
         <div class="login-container">
-            <img src="img/NAM.png" alt="Logo Perusahaan">
+            <img src="{{ asset('img/NAM.png') }}" alt="Logo Perusahaan">
         </div>
         <h2>LOGIN</h2>
-        <form method="POST">
+
+        @if(session('error'))
+            <p class="error">{{ session('error') }}</p>
+        @endif
+
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
             <div class="form-group">
                 <label for="username">Username</label>  
-                <input id="username" name="username" type="text" placeholder="username" required/>
+                <input id="username" name="username" type="text" placeholder="username" required value="{{ old('username') }}"/>
+                @error('username')
+                    <p class="error">{{ $message }}</p>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input id="password" name="password" type="password" placeholder="Password" required />
+                @error('password')
+                    <p class="error">{{ $message }}</p>
+                @enderror
             </div>
-            <p>Want to create an account? <a href="{{ route('register') }}">Register here</a></p>
-            <button type="submit" name="login">LOGIN</button>
-            <a href="{{ route('katalog') }}" class="tambah-btn">
-            Kembali
-            </a>
+            <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
+            <button type="submit">LOGIN</button>
+            <a href="{{ route('katalog') }}" class="tambah-btn">Kembali</a>
         </form>
     </div>
-    
 </body>
 </html>
